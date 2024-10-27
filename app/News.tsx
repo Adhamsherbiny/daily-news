@@ -41,7 +41,7 @@ import { useEffect, useState } from "react";
 async function getData() {
   try {
     const resultOne = await axios.get(
-      "http://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
+      "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
       {
         headers: {
           Accept: "application/json",
@@ -50,7 +50,7 @@ async function getData() {
     );
 
     const resultTwo = await axios.get(
-      "http://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18",
+      "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18",
       {
         headers: {
           Accept: "application/json",
