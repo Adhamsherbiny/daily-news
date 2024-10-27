@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import localFont from "next/font/local";
 import "./globals.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Metadata } from "next";
 const queryClient = new QueryClient();
 
 const geistSans = localFont({
@@ -22,6 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>Daily News</title>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

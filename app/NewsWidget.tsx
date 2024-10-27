@@ -28,13 +28,13 @@ export default function NewsWidget(props: NewsWidgetTypes) {
         <div className="date-author">
           <div className="date">
             {props.url == "https://removed.com"
-              ? ""
+              ? " "
               : props.publishedAt != "" ||
                 `Invalid Date` ||
                 "[Removed]" ||
                 undefined ||
                 null
-              ? props.publishedAt || props.publishedAt
+              ? props.publishedAt || props.published_date
               : " "}
           </div>
           {props.publishedAt == "" || props.published_date == "" ? (
