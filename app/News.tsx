@@ -5,7 +5,7 @@ import NewsWidget from "./NewsWidget";
 import axios from "axios";
 import { useQuery } from "react-query";
 import "./styles/news.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // ? NewsApi
 // ? api key => 203b419c3c484293835f919f943ff0cc
@@ -45,6 +45,7 @@ async function getData() {
       {
         headers: {
           Accept: "application/json",
+          "Content-Type": "application/json",
         },
       }
     );
@@ -54,6 +55,7 @@ async function getData() {
       {
         headers: {
           Accept: "application/json",
+          "Content-Type": "application/json",
         },
       }
     );

@@ -8,7 +8,7 @@ import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav() {
-  const [visable, setVisable] = useState<boolean>(false);
+  const [visable, setVisable] = useState<boolean>(true);
   return (
     <nav>
       <div className="logo">
