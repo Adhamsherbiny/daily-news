@@ -9,6 +9,12 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav() {
   const [visable, setVisable] = useState<boolean>(true);
+  document.getElementById("search")?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      setVisable(!visable);
+      document.getElementById("searchInput")!.style.display = "none";
+    }
+  });
   return (
     <nav>
       <div className="logo">
@@ -44,13 +50,15 @@ export default function Nav() {
                 id="searchIcon"
                 icon={faMagnifyingGlass}
                 onClick={() => {
-                  setVisable(!visable);
                   if (visable === false) {
                     document.getElementById("searchInput")!.style.display =
                       "none";
+                    setVisable(!visable);
                   } else {
                     document.getElementById("searchInput")!.style.display =
                       "flex";
+                    setVisable(!visable);
+
                     document.getElementById("search")!.focus();
                   }
                 }}

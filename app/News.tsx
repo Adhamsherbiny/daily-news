@@ -160,11 +160,6 @@ export default function News() {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              document.getElementById("searchInput")!.style.display = "none";
-            }
-          }}
           type="search"
           placeholder="Search"
         />
