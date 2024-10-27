@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import NewsWidget from "./NewsWidget";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useQuery } from "react-query";
 import "./styles/news.scss";
 import { useState } from "react";
@@ -40,7 +40,7 @@ import { useState } from "react";
 
 async function getData() {
   try {
-    const resultOne = await axios.get(
+    const resultOne: AxiosResponse = await axios.get(
       "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
       {
         headers: {
@@ -50,7 +50,7 @@ async function getData() {
       }
     );
 
-    const resultTwo = await axios.get(
+    const resultTwo: AxiosResponse = await axios.get(
       "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18",
       {
         headers: {
