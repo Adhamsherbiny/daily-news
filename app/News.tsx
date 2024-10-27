@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import NewsWidget from "./NewsWidget";
 import axios from "axios";
 import { useQuery } from "react-query";
