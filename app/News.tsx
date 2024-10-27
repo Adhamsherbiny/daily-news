@@ -29,11 +29,29 @@ import { useEffect, useState } from "react";
 
 async function getData() {
   try {
-    const resultOne = await axios.get(
-      "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc"
-    );
+    const resultOne = await axios.get("https://newsapi.org/v2/everything", {
+      params: {
+        q: "apple",
+        from: "2024-10-15",
+        to: "2024-10-15",
+        sortBy: "popularity",
+        apiKey: "203b419c3c484293835f919f943ff0cc",
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
     const resultTwo = await axios.get(
-      "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18"
+      "https://api.nytimes.com/svc/topstories/v2/arts.json",
+      {
+        params: {
+          "api-key": "hx5y3viP9blbRE9knf5Wy4BgYwNDda18",
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
     const allData = [...resultOne.data.articles, ...resultTwo.data.results];
     return allData;
