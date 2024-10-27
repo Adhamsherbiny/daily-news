@@ -3,10 +3,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import NewsWidget from "./NewsWidget";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { useQuery } from "react-query";
 import "./styles/news.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // ? NewsApi
 // ? api key => 203b419c3c484293835f919f943ff0cc
@@ -104,7 +104,7 @@ import { useEffect, useState } from "react";
 export default function News() {
   const [search, setSearch] = useState<string>();
   const { data, isLoading } = useQuery("articales", async function getData() {
-    const resultOne = await axios
+    const resultOne: any = await axios
       .get(
         "http://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc"
       )
@@ -114,7 +114,7 @@ export default function News() {
       .catch((error) => {
         console.error("There was an error making the request!", error);
       });
-    const resultTwo = await axios
+    const resultTwo: any = await axios
       .get(
         "http://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18"
       )
