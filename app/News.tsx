@@ -5,7 +5,7 @@ import NewsWidget from "./NewsWidget";
 import axios, { AxiosResponse } from "axios";
 import { useQuery } from "react-query";
 import "./styles/news.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ? NewsApi
 // ? api key => 203b419c3c484293835f919f943ff0cc
@@ -39,35 +39,50 @@ import { useState } from "react";
 // }
 
 async function getData() {
-  try {
-    const configOne = {
-      method: "get",
-      maxBodyLength: Infinity,
-      url: "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
-      headers: {},
-    };
-    const configTwo = {
-      method: "get",
-      maxBodyLength: Infinity,
-      url: "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
-      headers: {},
-    };
-
-    const resultOne = await axios.request(configOne);
-
-    const resultTwo = await axios.request(configTwo);
-
-    const allData = [
-      ...(resultOne.data.articles || []),
-      ...(resultTwo.data.results || []),
-    ];
-
-    return allData;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return []; // Return an empty array in case of error
-  }
+  const resultOne = await axios
+    .get(
+      "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc"
+    )
+    .then((response) => response);
+  const resultTwo = await axios
+    .get(
+      "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18"
+    )
+    .then((response) => response);
+  const allData = [...resultOne.data.articles, ...resultTwo.data.results];
+  return allData;
 }
+
+// async function getData() {
+//   try {
+//     const configOne = {
+//       method: "get",
+//       maxBodyLength: Infinity,
+//       url: "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
+//       headers: {},
+//     };
+//     const configTwo = {
+//       method: "get",
+//       maxBodyLength: Infinity,
+//       url: "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
+//       headers: {},
+//     };
+
+//     const resultOne = await axios.request(configOne);
+
+//     const resultTwo = await axios.request(configTwo);
+
+//     const allData = [
+//       ...(resultOne.data.articles || []),
+//       ...(resultTwo.data.results || []),
+//     ];
+
+//     return allData;
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     return []; // Return an empty array in case of error
+//   }
+// }
 
 export default function News() {
   const [search, setSearch] = useState<string>();
