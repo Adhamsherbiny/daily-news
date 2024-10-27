@@ -30,11 +30,19 @@ async function getData() {
     const [resultOne, resultTwo] = await Promise.all([
       axios.get(
         "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
-        { timeout: 50000 }
+        {
+          headers: {
+            Upgrade: "HTTP/2.0",
+          },
+        }
       ),
       axios.get(
         "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18",
-        { timeout: 50000 }
+        {
+          headers: {
+            Upgrade: "HTTP/2.0",
+          },
+        }
       ),
     ]);
     const allData = [...resultOne.data.articles, ...resultTwo.data.results];
