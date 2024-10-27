@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import NewsWidget from "./NewsWidget";
 import axios from "axios";
 import { useQuery } from "react-query";
 import "./styles/news.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ? NewsApi
 // ? api key => 203b419c3c484293835f919f943ff0cc
@@ -25,26 +26,15 @@ import { useState } from "react";
 //   const allData = [...resultOne.data.articles, ...resultTwo.data.results];
 //   return allData;
 // }
+
 async function getData() {
   try {
-    const [resultOne, resultTwo] = await Promise.all([
-      axios.get(
-        "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc",
-        {
-          headers: {
-            Upgrade: "HTTP/2.0",
-          },
-        }
-      ),
-      axios.get(
-        "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18",
-        {
-          headers: {
-            Upgrade: "HTTP/2.0",
-          },
-        }
-      ),
-    ]);
+    const resultOne = await axios.get(
+      "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc"
+    );
+    const resultTwo = await axios.get(
+      "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18"
+    );
     const allData = [...resultOne.data.articles, ...resultTwo.data.results];
     return allData;
   } catch (error) {
