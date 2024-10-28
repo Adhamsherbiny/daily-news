@@ -9,12 +9,18 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav() {
   const [visable, setVisable] = useState<boolean>(true);
-  document.getElementById("search")?.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      setVisable(!visable);
-      document.getElementById("searchInput")!.style.display = "none";
-    }
-  });
+  const searchInput = document.getElementById("search") as HTMLInputElement;
+
+  if (searchInput === null) {
+    return "";
+  } else {
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        setVisable(!visable);
+        document.getElementById("searchInput")!.style.display = "none";
+      }
+    });
+  }
   return (
     <nav>
       <div className="logo">
@@ -58,7 +64,6 @@ export default function Nav() {
                     document.getElementById("searchInput")!.style.display =
                       "flex";
                     setVisable(!visable);
-
                     document.getElementById("search")!.focus();
                   }
                 }}
