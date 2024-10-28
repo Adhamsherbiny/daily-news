@@ -12,7 +12,6 @@ export default function Nav() {
   const searchInput = document.getElementById("search") as HTMLInputElement;
 
   if (searchInput === null) {
-    return "";
   } else {
     searchInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {

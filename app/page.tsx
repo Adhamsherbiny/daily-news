@@ -1,3 +1,4 @@
+"use client";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import Explore from "./Explore";

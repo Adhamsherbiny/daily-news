@@ -1,25 +1,29 @@
-$mainColor: white;
-$mainBg:  white;
-$textColor: white;
+$mainColor: black;
+$mainBg:  black;
+$textColor: silver;
 footer{
     margin-top: 30px;
     user-select: none;
     width: 100%;
-    background-color: black;
+    background-color: $mainColor;
     color: $textColor;
     padding: 10px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    .container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
     .footer-head{
-        width: 100%;
         display: flex;
         justify-content: center;
         p{
-            max-width: 600px;
-            font-size: 14px;
-            text-align: center;
-            color: silver;
+            max-width: 300px;
+            font-size: 12px;
+            color: $textColor;
+            padding-inline: 2px;
         }
     }
     .footer-body{
@@ -27,33 +31,33 @@ footer{
         align-items: center;
         justify-content: center;
         ul{
-            width: 80%;
+            max-width: 320px;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
             list-style: none;
             padding: 0 5px;
             li .links .icon{
-                width: 35px;
+                width: 30px;
                 transition: 0.3s;
-                font-size: 25px;
-                color: gray;
+                font-size: 20px;
+                color: $textColor;
+                margin-right: 10px;
             }
             li .links .icon:hover{
-                color: $mainColor;
+                color: teal;
             }
         }
     }
     .copyrights{
-        margin-top: 10px;
-        color: gray;
+        color: $textColor;
         width: 100%;
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
         p{
-            font-size: 14px;
+            font-size: 10px;
         }
         span{
             font-size: 10px;

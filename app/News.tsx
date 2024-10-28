@@ -52,7 +52,7 @@ export default function News() {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-          type="search"
+          type="text"
           placeholder="Search"
         />
       </div>
