@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React, { useState } from "react";
-import "./styles/nav.scss";
+import React, { useEffect, useState } from "react";
+import "../styles/nav.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
@@ -9,17 +8,19 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav() {
   const [visable, setVisable] = useState<boolean>(true);
-  const searchInput = document.getElementById("search") as HTMLInputElement;
+  useEffect(() => {
+    const searchInput = document.getElementById("search") as HTMLInputElement;
 
-  if (searchInput === null) {
-  } else {
-    searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        setVisable(!visable);
-        document.getElementById("searchInput")!.style.display = "none";
-      }
-    });
-  }
+    if (searchInput === null) {
+    } else {
+      searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          setVisable(!visable);
+          document.getElementById("searchInput")!.style.display = "none";
+        }
+      });
+    }
+  });
   return (
     <nav>
       <div className="logo">

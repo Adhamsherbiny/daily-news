@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
-import "./styles/newsWidget.scss";
+import "../styles/newsWidget.scss";
 interface NewsWidgetTypes {
   author?: string;
   title?: string;

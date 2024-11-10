@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
-import pic from "../public/pic.webp";
-import "./styles/explore.scss";
+import pic from "../../public/pic.webp";
+import "../styles/explore.scss";
 
 export default function Explore() {
   return (

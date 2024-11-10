@@ -1,9 +1,8 @@
-"use client";
-import Nav from "./Nav";
-import Footer from "./Footer";
-import Explore from "./Explore";
-import Welcome from "./Welcome";
-import News from "./News";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import Explore from "./components/Explore";
+import Welcome from "./components/Welcome";
+import News from "./components/News";
 export default function Home() {
   return (
     <div>

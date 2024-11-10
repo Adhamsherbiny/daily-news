@@ -3,7 +3,7 @@
 import NewsWidget from "./NewsWidget";
 import axios from "axios";
 import { useQuery } from "react-query";
-import "./styles/news.scss";
+import "../styles/news.scss";
 import { useState } from "react";
 
 async function getData() {
