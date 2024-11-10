@@ -15,62 +15,70 @@ interface NewsWidgetTypes {
 }
 
 export default function NewsWidget(props: NewsWidgetTypes) {
-  if (props.url == "https://removed.com") {
-    return " ";
+  if (
+    props.url == "https://removed.com" ||
+    props.url == undefined ||
+    props.url == null ||
+    props.urlToImage == null ||
+    props.urlToImage == undefined
+  ) {
+    return <></>;
   } else {
     return (
       <div id="news" className="news-widget">
-        <img
-          className="pic"
-          src={props.urlToImage == undefined ? " " : props.urlToImage}
-          alt=""
-        />
-        <div className="date-author">
-          <div className="date">
-            {props.url == "https://removed.com"
-              ? " "
-              : props.publishedAt != "" ||
-                `Invalid Date` ||
-                "[Removed]" ||
-                undefined ||
-                null
-              ? props.publishedAt || props.published_date
-              : " "}
-          </div>
-          {props.publishedAt == "" || props.published_date == "" ? (
-            ""
-          ) : (
-            <div className="boulet"></div>
-          )}
-          <div className="author">{props.author}</div>
+        <div className="pic-container">
+          <img
+            className="pic"
+            src={props.urlToImage == undefined ? " " : props.urlToImage}
+            alt=""
+          />
         </div>
-        <div className="title">
+        <div className="widget-body">
+          <div className="title">
+            <div>
+              {props.title != " " || "Removed" || undefined || null
+                ? props.title
+                : ""}
+            </div>
+          </div>
           <div>
-            {props.title != " " || "Removed" || undefined || null
-              ? props.title
-              : ""}
+            <div className="content">
+              {props.content != "" || undefined || null ? props.content : " "}
+            </div>
           </div>
-        </div>
-        <div>
-          <div className="content">
-            {props.content != "" || undefined || null
-              ? props.content?.slice(0, 100)
-              : " "}
+          <div className="date-author">
+            <div className="date">
+              {props.url == "https://removed.com"
+                ? " "
+                : props.publishedAt != "" ||
+                  `Invalid Date` ||
+                  "[Removed]" ||
+                  undefined ||
+                  null
+                ? props.publishedAt || props.published_date
+                : " "}
+            </div>
+            {props.publishedAt == "" || props.published_date == "" ? (
+              ""
+            ) : (
+              <div className="boulet"></div>
+            )}
+            <div className="author">{props.author}</div>
           </div>
-        </div>
 
-        <div className="read-more-div">
-          {props.url == "https://removed.com" ? (
-            ""
-          ) : (
-            <Link
-              target="_blank"
-              className="read-more"
-              href={props.url == "" || undefined || null ? " " : props.url}
-            >
-              Read More
-            </Link>
-          )}
+          <div className="read-more-div">
+            {props.url == "https://removed.com" ? (
+              ""
+            ) : (
+              <Link
+                target="_blank"
+                className="read-more"
+                href={props.url == "" || undefined || null ? " " : props.url}
+              >
+                Read More
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     );

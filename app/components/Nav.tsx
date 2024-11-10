@@ -1,26 +1,9 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import "../styles/nav.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default function Nav() {
-  const [visable, setVisable] = useState<boolean>(true);
-  useEffect(() => {
-    const searchInput = document.getElementById("search") as HTMLInputElement;
-
-    if (searchInput === null) {
-    } else {
-      searchInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          setVisable(!visable);
-          document.getElementById("searchInput")!.style.display = "none";
-        }
-      });
-    }
-  });
   return (
     <nav>
       <div className="logo">
@@ -47,27 +30,6 @@ export default function Nav() {
           <li>
             <Link href="" className="link">
               About Us
-            </Link>
-          </li>
-          <li>
-            <Link href="#news">
-              <FontAwesomeIcon
-                className="search-icon"
-                id="searchIcon"
-                icon={faMagnifyingGlass}
-                onClick={() => {
-                  if (visable === false) {
-                    document.getElementById("searchInput")!.style.display =
-                      "none";
-                    setVisable(!visable);
-                  } else {
-                    document.getElementById("searchInput")!.style.display =
-                      "flex";
-                    setVisable(!visable);
-                    document.getElementById("search")!.focus();
-                  }
-                }}
-              />
             </Link>
           </li>
         </ul>

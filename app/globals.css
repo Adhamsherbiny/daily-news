@@ -7,6 +7,9 @@
   width: 1px;
   background-color: black;
 }
+*{
+  outline: none;
+}
 
 body {
   color: var(--foreground);

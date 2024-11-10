@@ -13,17 +13,19 @@ nav{
     user-select: none;
     color: $mainColor;
     display: flex;
-    padding: 10px 0;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 10px;
     @media (max-width: 768px) {
         flex-direction: column;
         height: 100px;
-        justify-content: space-between;
+        justify-content: space-around;
+        padding: 10px;
     }
     .logo{
         display: flex;
         align-items: center;
+        width: fit-content;
 
         .newsPaperLogo{
             font-size: 18px;
@@ -39,7 +41,7 @@ nav{
     .links{
         width: 50%;
         @media (max-width: 768px) {
-            width: 90%;
+            width: 80%;
         }
         ul{
             display: flex;
@@ -47,9 +49,6 @@ nav{
             justify-content: space-between;
             padding: 0 5px;
             list-style: none;
-            @media (max-width: 768px) {
-                width: 100%;
-            }
             li{
                 display: block;
                 transition: 0.3s;

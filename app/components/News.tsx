@@ -43,19 +43,22 @@ export default function News() {
 
   return (
     <div className="news-section" id="news-section">
-      <h1>Techonolgy News</h1>
-      <div className="sectionOfSearch" id="searchInput">
-        <input
-          id="search"
-          className="search"
-          autoComplete="off"
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-          type="text"
-          placeholder="Search"
-        />
+      <div className="header">
+        <h1>Techonolgy News</h1>
+        <div className="sectionOfSearch" id="searchInput">
+          <input
+            id="search"
+            className="search"
+            autoComplete="off"
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+            type="search"
+            placeholder="Search"
+          />
+        </div>
       </div>
+
       <div className="news">
         {data
           ?.sort(
