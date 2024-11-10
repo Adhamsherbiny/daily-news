@@ -1,9 +1,6 @@
-"use client";
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import localFont from "next/font/local";
 import "./globals.css";
-import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient();
+import ChildrenContainer from "./layouts/children";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,9 +26,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
+        <ChildrenContainer>{children}</ChildrenContainer>
       </body>
     </html>
   );
