@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import ChildrenContainer from "./layouts/children";
+import { Metadata } from "next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -13,6 +14,11 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+export const metadata: Metadata = {
+  title: "Daily Tech News",
+  description: "...",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,9 +26,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <title>Daily News</title>
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -6,12 +6,14 @@ import Welcome from "./components/Welcome";
 import News from "./components/News";
 export default function Home() {
   return (
-    <Container>
+    <div>
       <Nav />
-      <Welcome />
-      <Explore />
-      <News />
+      <Container>
+        <Welcome />
+        <Explore />
+        <News />
+      </Container>
       <Footer />
-    </Container>
+    </div>
   );
 }

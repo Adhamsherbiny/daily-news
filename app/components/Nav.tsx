@@ -8,7 +8,7 @@ export default function Nav() {
     <nav>
       <div className="logo">
         <FontAwesomeIcon className="newsPaperLogo" icon={faNewspaper} />
-        <h1>Daily Briefing</h1>
+        <h1>Daily Tech News</h1>
       </div>
       <div className="links">
         <ul>
@@ -18,13 +18,13 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link href="#news-section" className="link">
-              News
+            <Link href="#explore" className="link">
+              Explore
             </Link>
           </li>
           <li>
-            <Link href="#explore" className="link">
-              Explore
+            <Link href="#news-section" className="link">
+              News
             </Link>
           </li>
           <li>

@@ -16,22 +16,16 @@ interface NewsWidgetTypes {
 
 export default function NewsWidget(props: NewsWidgetTypes) {
   if (
-    props.url == "https://removed.com" ||
     props.url == undefined ||
     props.url == null ||
-    props.urlToImage == null ||
-    props.urlToImage == undefined
+    props.url == "https://removed.com"
   ) {
     return <></>;
   } else {
     return (
       <div id="news" className="news-widget">
         <div className="pic-container">
-          <img
-            className="pic"
-            src={props.urlToImage == undefined ? " " : props.urlToImage}
-            alt=""
-          />
+          <img className="pic" src={props.urlToImage} alt="News Picture" />
         </div>
         <div className="widget-body">
           <div className="title">
@@ -63,7 +57,9 @@ export default function NewsWidget(props: NewsWidgetTypes) {
             ) : (
               <div className="boulet"></div>
             )}
-            <div className="author">{props.author}</div>
+            <div className="author">
+              {props.author == "Unknown" ? "Daily Tech News" : props.author}
+            </div>
           </div>
 
           <div className="read-more-div">

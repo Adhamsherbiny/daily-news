@@ -1,10 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import NewsWidget from "./NewsWidget";
-import axios from "axios";
-import { useQuery } from "react-query";
-import "../styles/news.scss";
 import { useState } from "react";
+import { useQuery } from "react-query";
+import axios from "axios";
+import NewsWidget from "./NewsWidget";
+import Pagination from "./Pagination";
+import "../styles/news.scss";
+
+type Article = {
+  urlToImage?: string;
+  title?: string;
+  author?: string;
+  publishedAt?: string;
+  published_date?: string;
+  content?: string;
+  abstract?: string;
+  description?: string;
+  section?: string;
+  url?: string;
+};
 
 async function getData() {
   const resultOne = await axios.get(
@@ -18,8 +31,24 @@ async function getData() {
 }
 
 export default function News() {
-  const [search, setSearch] = useState<string>();
-  const { data, isLoading } = useQuery("articales", getData);
+  const [search, setSearch] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const perPage = 10;
+
+  const { data, isLoading } = useQuery("articles", getData);
+
+  // Filter the data based on the search term
+  const filteredData = data?.filter((article: Article) =>
+    search ? article.title?.toLowerCase().includes(search.toLowerCase()) : true
+  );
+
+  const totalPages = filteredData
+    ? Math.ceil(filteredData.length / perPage)
+    : 1;
+
+  // Slice the filtered data for the current page
+  const start = (currentPage - 1) * perPage;
+  const entries = filteredData?.slice(start, start + perPage);
 
   if (isLoading) {
     return (
@@ -35,7 +64,7 @@ export default function News() {
           Loading News
         </p>
         <p style={{ fontSize: "14px", textAlign: "center" }}>
-          Please Wait a few seconds
+          Please wait a few seconds
         </p>
       </div>
     );
@@ -44,7 +73,7 @@ export default function News() {
   return (
     <div className="news-section" id="news-section">
       <div className="header">
-        <h1>Techonolgy News</h1>
+        <h1>Technology News</h1>
         <div className="sectionOfSearch" id="searchInput">
           <input
             id="search"
@@ -52,6 +81,7 @@ export default function News() {
             autoComplete="off"
             onChange={(e) => {
               setSearch(e.target.value);
+              setCurrentPage(1);
             }}
             type="search"
             placeholder="Search"
@@ -60,50 +90,42 @@ export default function News() {
       </div>
 
       <div className="news">
-        {data
+        {entries
           ?.sort(
             (a, b) =>
-              new Date(b.publishedAt).getTime() -
-              new Date(a.publishedAt).getTime()
+              new Date(b.publishedAt || b.published_date).getTime() -
+              new Date(a.publishedAt || a.published_date).getTime()
           )
-          ?.filter((articales: any) =>
-            search == null
-              ? articales
-              : articales.title.toLowerCase().includes(search.toLowerCase())
-          )
-          .map((articales, k) => (
+          .map((article, k) => (
             <NewsWidget
               key={k}
-              urlToImage={
-                articales.urlToImage == "" || null || undefined
-                  ? "img"
-                  : articales.urlToImage
-              }
+              urlToImage={article.urlToImage || "/unnamed.png"}
               title={
-                articales.title == "[Removed]"
-                  ? ""
-                  : articales.title ||
-                    articales.description ||
-                    articales.section
+                article.title || article.description || article.section || ""
               }
-              author={articales.author}
+              author={article.author || "Unknown"}
               publishedAt={
-                new Date(articales.publishedAt).toLocaleDateString() ==
-                "Invalid Date"
+                new Date(
+                  article.publishedAt || article.published_date
+                ).toLocaleDateString() === "Invalid Date"
                   ? ""
-                  : new Date(articales.publishedAt || articales.published_date)
+                  : new Date(article.publishedAt || article.published_date)
                       .toLocaleDateString()
                       .replaceAll("/", "-")
               }
               content={
-                articales.content == "[Removed]"
-                  ? ""
-                  : articales.abstract || articales.description
+                article.content || article.abstract || article.description || ""
               }
-              url={articales.url}
+              url={article.url}
             />
           ))}
       </div>
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setPage={setCurrentPage}
+      />
     </div>
   );
 }
