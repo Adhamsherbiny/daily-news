@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import axios from "axios";
+import getData from "../utils/getData";
 import NewsWidget from "./NewsWidget";
 import Pagination from "./Pagination";
 import "../styles/news.scss";
@@ -19,25 +19,12 @@ type Article = {
   url?: string;
 };
 
-async function getData() {
-  const resultOne = await axios.get(
-    "https://newsapi.org/v2/everything?q=apple&from=2024-10-15&to=2024-10-15&sortBy=popularity&apiKey=203b419c3c484293835f919f943ff0cc"
-  );
-  const resultTwo = await axios.get(
-    "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=hx5y3viP9blbRE9knf5Wy4BgYwNDda18"
-  );
-  const allData = [...resultOne.data.articles, ...resultTwo.data.results];
-  return allData;
-}
-
 export default function News() {
   const [search, setSearch] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const perPage = 10;
 
   const { data, isLoading } = useQuery("articles", getData);
-
-  // Filter the data based on the search term
   const filteredData = data?.filter((article: Article) =>
     search ? article.title?.toLowerCase().includes(search.toLowerCase()) : true
   );
@@ -46,7 +33,6 @@ export default function News() {
     ? Math.ceil(filteredData.length / perPage)
     : 1;
 
-  // Slice the filtered data for the current page
   const start = (currentPage - 1) * perPage;
   const entries = filteredData?.slice(start, start + perPage);
 
