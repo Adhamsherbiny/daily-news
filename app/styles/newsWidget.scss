@@ -1,101 +1,198 @@
 $mainColor: royalblue;
 $textColor: white;
-.news-widget{
-    user-select: none;
-    position: relative;
-    border-radius: 10px;
-    border-radius: 8px;
-    margin: 10px 0;
+.news-widget {
+  width: 95%;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  user-select: none;
+  position: relative;
+  border-radius: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  @media screen and (max-width: 1023px) {
+    width: 70%;
+  }
+  .pic-container {
+    width: 26em;
+    height: 21em;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    @media screen and (max-width: 978px) {
-        width: 100%;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 768px) {
+      width: 25em;
+      height: 14em;
     }
-    .pic-container{
-        width: 320px;
-        height: 220px;
+    @media screen and (min-width: 1024px) {
+      width: 22em;
+      height: 19em;
+    }
+    @media screen and (min-width: 1054px) {
+      width: 24em;
+      height: 19em;
+    }
+    @media screen and (min-width: 1098px) {
+      width: 23em;
+      height: 21em;
+    }
+    @media screen and (min-width: 1160px) {
+      width: 24em;
+      height: 21em;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 25em;
+      height: 21em;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 24em;
+      height: 21em;
+    }
+    @media screen and (min-width: 1250px) {
+      width: 26em;
+      height: 21em;
+    }
+    @media screen and (min-width: 1300px) {
+      width: 27em;
+      height: 21em;
+    }
+
+    @media screen and (min-width: 1350px) {
+      width: 27em;
+      height: 21em;
+    }
+
+    .pic {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      margin: 5px auto;
+      border-color: none;
+    }
+  }
+  .widget-body {
+    background-color: #f5f5f5;
+    width: 42.5em;
+    height: calc(21em - 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 2rem;
+
+    @media screen and (max-width: 1023px) {
+      margin-block: 20px;
+      width: 25em;
+      height: 20em;
+      padding: 12px;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-block: 20px;
+      width: 24em;
+      height: 25em;
+      padding: 12px;
+    }
+    @media (min-width: 1024px) {
+      width: 33em;
+      height: calc(19em - 4rem);
+    }
+    @media (min-width: 1054px) {
+      width: 34em;
+      height: calc(19em - 4rem);
+    }
+    @media (min-width: 1098px) {
+      width: 36em;
+      height: calc(21em - 4rem);
+    }
+    @media (min-width: 1160px) {
+      width: 38em;
+      height: calc(21em - 4rem);
+    }
+
+    @media (min-width: 1200px) {
+      width: 40em;
+      height: calc(21em - 4rem);
+    }
+    @media (min-width: 1250px) {
+      width: 42em;
+      height: calc(21em - 4rem);
+    }
+    @media (min-width: 1300px) {
+      width: 42.5em;
+      height: calc(21em - 4rem);
+    }
+
+    @media screen and (min-width: 1350px) {
+      width: 47em;
+      height: calc(21em - 4rem);
+    }
+
+    .date-author {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 0.7em;
+      color: #1d3c56;
+
+      margin-bottom: 5px;
+      .boulet {
+        width: 5px;
+        height: 5px;
+        background-color: #1d3c56;
+        margin-inline: 5px;
+        border-radius: 50%;
+      }
+    }
+    .title {
+      color: #1d3c56;
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+    .read-more-div {
+      display: flex;
+      align-items: center;
+      &:hover {
+        .read-more {
+          border-radius: 80px 0 0 80px;
+        }
+        button {
+          border-radius: 0 80px 80px 0;
+        }
+      }
+      button {
+        background-color: #a52c45;
+        border: 1px solid #a52c45;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 18px;
+        transition: 0.5s;
+      }
+
+      .read-more {
+        color: $textColor;
+        text-decoration: none;
+        font-size: 1em;
+        width: 140px;
+        height: 27px;
         display: flex;
         justify-content: center;
         align-items: center;
-        @media screen and (max-width: 978px) {
-            width: 290px;
-            height: 240px;
-        }
-        .pic{
-        width: 300px;
-        height: 220px;
-        border-radius: 8px;
-        margin: 5px auto;
-        border-color: none;
-        @media screen and (max-width: 978px) {
-            width: 290px;
-            height: 240px;
-            margin-bottom: 10px;
-        }
-        }
-        
+        background-color: #a52c45;
+        padding: 8px 10px;
+        border: 1px solid #a52c45;
+        border-radius: 80px;
+        margin-top: 10px;
+        transition: 0.5s;
+      }
     }
-    .widget-body{
-        background-color: #f5f5f5;
-        padding-block: 10px;
-        width: 500px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border-radius: 8px;
-        padding: 10px;
-        @media screen and (max-width: 978px) {
-            justify-content: space-around;
-            width: 270px;
-        }
-
-        .date-author{
-            width: 100%;
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            color: gray;
-            margin-bottom: 5px;
-            .boulet{
-                width: 5px;
-                height: 5px;
-                background-color: gray;
-                margin-inline: 5px;
-                border-radius: 50%;
-            }
-        }
-        .title{
-            p{
-                font-weight: bold;
-                font-size: 14px;
-            }
-            margin-bottom: 5px;
-        }
-        .read-more-div{
-            display: flex;
-            justify-content: space-between;
-            .read-more{
-                color: $textColor;
-                text-decoration: none;
-                font-size: 14px;
-                background-color: $mainColor;
-                padding: 8px 10px;
-                border: 1px solid white;
-                border-radius: 20px;
-                margin-top: 10px;
-                transition: 0.5s;
-                &:hover{
-                    background-color: $textColor;
-                    color: $mainColor;
-                    text-decoration:underline;
-                }
-            }
-        }
-        .content{
-            font-size: 12px;
-            color: gray;
-        }
+    .content {
+      font-size: 0.9em;
+      color: #1d3c56;
     }
-
+  }
 }

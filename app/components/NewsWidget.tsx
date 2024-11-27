@@ -3,6 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import "../styles/newsWidget.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 interface NewsWidgetTypes {
   author?: string;
   title?: string;
@@ -74,6 +76,9 @@ export default function NewsWidget(props: NewsWidgetTypes) {
                 Read More
               </Link>
             )}
+            <button>
+              <FontAwesomeIcon icon={faArrowRight} />
+            </button>
           </div>
         </div>
       </div>
